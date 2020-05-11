@@ -1,0 +1,63 @@
+<!-- <p>playlist works!</p> -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    add new
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"> Add New </h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+            </div>
+            <div class="modal-body">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>Title :</td>
+                            <td><input type="text" [(ngModel)]="title" (keyup)="check()"> </td>
+                        </tr>
+                        <tr>
+                            <td>youtube Url :</td>
+                            <td><input type="text" [(ngModel)]="youtubeUrl"  (keyup)="check()" pattern="http://www\.youtube\.com\/(.+)|https://www\.youtube\.com\/(.+)"> </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- <div class="col-md-5">Title : </div>
+            <div><input type="text" [(ngModel)]="title"></div> -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="checkSubmit()" [(disabled)]="eventT">Save Data</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <button (click)='load()'>sss</button> -->
+<!-- <button (click)='play()'>play</button> -->
+<!-- {{displayList}}----<br> {{videoList|json}} $$$$$$$$$$ <br> -->
+<!-- <ul *ngFor="let p of videoList">
+    <li>{{p|json}}</li>
+</ul> -->
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let p of videoList; index as i">
+        <!-- {{p|json}}<br> -->
+        <h2>{{p.title}} <span class="flotRight">
+            <button (click)="play(p,i)"><span *ngIf="p.playFlag"><i class="fa fa-play" aria-hidden="true"></i></span>
+                    <span *ngIf="!p.playFlag"><i class="fa fa-pause"aria-hidden="true"></i></span>
+            </button>
+            <button (click)="stop(p,i)"><i class="fa fa-stop" aria-hidden="true"></i></button>
+        </span>
+        </h2>
+    </li>
+    <!-- <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li> -->
+</ul>

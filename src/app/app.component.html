@@ -1,0 +1,28 @@
+<!-- {{title}} -->
+<!-- <router-outlet></router-outlet> -->
+
+<!-- <app-header></app-header> -->
+
+<div class="container paddingTop">
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item active">
+                    <app-header (masterPlays)="triggerMaster($event)"></app-header>
+                </li>
+                <li class="list-group-item">
+                    <!-- [dataRecivedVideo]="reciveAddForm"  -->
+                    <app-playlist (addForm)="cool($event)" (playDataPass)="playData($event)" [masterp]="master" (mastpay)="mastpay($event)"></app-playlist>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <!-- playTriggerSample<br>
+            {{playTriggerSample|json}}<br>
+            dataPass<br>
+            {{dataPass|json}} -->
+            <!-- (outLoggi)="outputPlayer($event)" -->
+            <app-video [loggi]="add" [playTriggerSample]="dataPass" [triggermasterPlay]="masterValu"></app-video>
+        </div>
+    </div>
+</div>
