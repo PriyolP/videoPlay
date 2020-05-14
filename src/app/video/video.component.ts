@@ -63,7 +63,24 @@ export class VideoComponent implements OnChanges {
   ngOnInit(): void {
     // setTimeout(() => this.onYouTubeIframeAPIReady(0, 'uu'), 500);
     // this.onYouTubeIframeAPIReady(0, 'uu');
+    if (sessionStorage.getItem("video")) {
+      var store = JSON.parse(sessionStorage.getItem("video"));
+      console.log(store);
+      store.map((c) => {
+        this.createNewId(c.id);
+        this.onYouTubeIframeAPIReady(this.player.length, c.youtubeId, c.title, c.id);
+      })
+    }
 
+  }
+  createNewId(id: string) {
+    // var getInput = document.getElementById('ss').innerHTML;
+    var node = document.createElement("div");
+    var before = document.getElementById("before");
+    // node.className = "col=md-4";
+    node.innerHTML = `<div class="col-md-4"><div id="${id}"></div>`;
+    var parentDiv = document.getElementById("mainId");    // Get the <ul> element to insert a new node
+    parentDiv.insertBefore(node, before);
   }
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
@@ -79,13 +96,14 @@ export class VideoComponent implements OnChanges {
           console.log(c);
           if (c.flag) {
             c.flag = false;
-            var getInput = document.getElementById('ss').innerHTML;
-            var node = document.createElement("div");
-            var before = document.getElementById("before");
-            // node.className = "col=md-4";
-            node.innerHTML = `<div class="col-md-4"><div id="${c.id}"></div>`;
-            var parentDiv = document.getElementById("mainId");    // Get the <ul> element to insert a new node
-            parentDiv.insertBefore(node, before);
+            this.createNewId(c.id);
+            // var getInput = document.getElementById('ss').innerHTML;
+            // var node = document.createElement("div");
+            // var before = document.getElementById("before");
+            // // node.className = "col=md-4";
+            // node.innerHTML = `<div class="col-md-4"><div id="${c.id}"></div>`;
+            // var parentDiv = document.getElementById("mainId");    // Get the <ul> element to insert a new node
+            // parentDiv.insertBefore(node, before);
 
             // document.getElementById('mainId').innerHTML += `<div class="col-md-4"><div id="${c.id}"></div>`;
             // setTimeout(() => 
@@ -95,6 +113,7 @@ export class VideoComponent implements OnChanges {
         });
         // console.log(JSON.parse(changes['loggi'].currentValue));
         console.log(sample);
+        sessionStorage.setItem("video", JSON.stringify(sample));
         // this.outLoggi.emit(sample);
       }
     }
@@ -130,7 +149,7 @@ export class VideoComponent implements OnChanges {
 
           if (sample2 === "play") {
             this.play(number);
-          }else if (sample2 === "pause") {
+          } else if (sample2 === "pause") {
             this.pause(number);
           } else if (sample2 === "stop") {
             this.stop(number);

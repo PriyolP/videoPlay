@@ -1,8 +1,10 @@
 <!-- <p>header works!</p> -->
-
+<!-- play: {{mPlay}}
+<br>
+pause: {{mPause}} -->
 <!-- <button class="btn btn-warning">Add New</button> -->
-<button class="btn btn-default" (click)="play()">Master <i class="fa fa-play"aria-hidden="true"></i></button>&nbsp;
-<button class="btn btn-warning" (click)="pause()">Master <i class="fa fa-pause"aria-hidden="true"></i></button>&nbsp;
+<button class="btn btn-default" (click)="play()" [disabled]="mPlay">Master <i class="fa fa-play"aria-hidden="true"></i></button>&nbsp;
+<button class="btn btn-warning" (click)="pause()" [disabled]="mPause">Master <i class="fa fa-pause"aria-hidden="true"></i></button>&nbsp;
 <button class="btn btn-info"(click)="stop()">Master <i class="fa fa-stop"aria-hidden="true"></i></button>
 
 <!-- <h2>Basic Modal Example</h2> -->

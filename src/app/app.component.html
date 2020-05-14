@@ -8,11 +8,11 @@
         <div class="col-md-4">
             <ul class="list-group">
                 <li class="list-group-item active">
-                    <app-header (masterPlays)="triggerMaster($event)"></app-header>
+                    <app-header (masterPlays)="triggerMaster($event)" [mPlay]="mPlayApp" [mPause]="mPauseApp"></app-header>
                 </li>
                 <li class="list-group-item">
                     <!-- [dataRecivedVideo]="reciveAddForm"  -->
-                    <app-playlist (addForm)="cool($event)" (playDataPass)="playData($event)" [masterp]="master" (mastpay)="mastpay($event)"></app-playlist>
+                    <app-playlist (addForm)="cool($event)" (playDataPass)="playData($event)" [masterp]="master" (mastpay)="mastpay($event)" (masterAll)=playCondition($event)></app-playlist>
                 </li>
             </ul>
         </div>

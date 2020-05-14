@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,26 +6,36 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-@Output() masterPlays = new EventEmitter();
+  @Output() masterPlays = new EventEmitter();
   constructor() { }
-  private flag:boolean=true;
+  private flag: boolean = true; // dump value;
+
+  @Input() mPlay: boolean;
+  @Input() mPause: boolean;
+
   ngOnInit(): void {
   }
-  flagTriger(){
-    this.flag=!this.flag;
+  flagTriger() {
+    this.flag = !this.flag;
   }
 
-  play(){
+  play() {
+    // this.mPlay = true;
+    // this.mPause = false;
     this.flagTriger();
-    this.masterPlays.emit({flag:!this.flag, masterTrig:"play"});
+    this.masterPlays.emit({ flag: !this.flag, masterTrig: "play" });
   }
-  pause(){
+  pause() {
+    // this.mPlay = false;
+    // this.mPause = true;
     this.flagTriger();
-    this.masterPlays.emit({flag:!this.flag, masterTrig:"pause"});
+    this.masterPlays.emit({ flag: !this.flag, masterTrig: "pause" });
   }
-  stop(){
+  stop() {
+    // this.mPlay = false;
+    // this.mPause = true;
     this.flagTriger();
-    this.masterPlays.emit({flag:!this.flag, masterTrig:"stop"});
+    this.masterPlays.emit({ flag: !this.flag, masterTrig: "stop" });
   }
 
 }
